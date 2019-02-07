@@ -17,4 +17,5 @@ Multiplying this number will give us a number that is no greater than the range,
 For instance, if we're given 20 and 70, the range is 50, so we'll first start by getting a number between 0 and 50.
 If the minimum is greater than 0, we have to make sure the number cannot be less than the minimum, so we must add the minimum value to our calculated random number.
 Since we've already accounted for the range, if we add 20 (our min from the example) to a number between 0 and 50, then mathematically it cannot be lower than 20 or higher than 70.
+Then we just round to get an integer instead of a float.
 '''
