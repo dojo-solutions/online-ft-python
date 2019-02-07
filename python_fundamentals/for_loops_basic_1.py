@@ -1,3 +1,6 @@
+# I used functions here because it's easy to comment out the function call.
+# All of these except the last one can be done without being defined as functions.
+
 # Basic - Print all integers from 0 to 150.
 def basic():
   for i in range(151):
