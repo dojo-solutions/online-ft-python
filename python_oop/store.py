@@ -11,6 +11,14 @@ class Store:
     self.products.pop(id).print_info()
     return self
 
+  # this version is for the sensei bonus
+  # def sell_product(self, id):
+  #   # we need the index number so we can pop it directly from there (handy that python includes that)
+  #   for i in range(len(self.products)):
+  #     if self.products[i].id == id:
+  #       self.products.pop(i).print_info()
+  #   return self
+
   def inflation(self, percent_increase):
     for product in self.products:
       product.update_price(percent_increase, True)
