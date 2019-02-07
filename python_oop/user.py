@@ -17,6 +17,7 @@ class User:
     self.account_balance -= amount
     other_user.account_balance += amount
 
+# I did my own testing rather than following the instructions on platform
 wes = User("Wes", "wharper@codingdojo.com")
 jenny = User("Jenny", "fake@fake.com")
 
