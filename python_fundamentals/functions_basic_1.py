@@ -62,5 +62,8 @@ def length_and_value(size, value):
   #   result_list.append(value)
   # return result_list
 
+  # or another list comprehension
+  # return [value for i in range(size)]
+
 print(length_and_value(4, 7))
 print(length_and_value(6, 2))
