@@ -37,6 +37,10 @@ def values_greater_than_second(lst):
       result_list.append(item)
   return result_list
 
+  # or you can go super advanced on this one and use a python "list comprehension"
+  # https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
+  # return [i for i in lst if i > lst[1]]
+
 
 print(values_greater_than_second([5, 2, 3, 2, 1, 4]))
 print(values_greater_than_second([3]))
