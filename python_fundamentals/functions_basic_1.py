@@ -7,6 +7,10 @@ def countdown(num):
     result_list.append(i)
   return result_list
 
+  # or go super advanced and pythonic with a "list comprehension" and accomplish this in one line
+  # https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
+  # return [i for i in range(num, -1, -1)]
+
 print(countdown(5))
 
 # Print and Return - Create a function that will receive a list with two numbers. Print the first value and return the second.
