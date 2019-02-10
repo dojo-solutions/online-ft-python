@@ -136,7 +136,7 @@ def reverse_list(lst):
     half_len = int(len(lst) / 2)
     for i in range(half_len):
         # this is a neat way to do a python swap, a temp is equally valid
-        lst[i] , lst[len(lst) - 1] = lst[len(lst) - 1], lst[i]
+        lst[i] , lst[len(lst) - 1 - i] = lst[len(lst) - 1 - i], lst[i]
     return lst
 
 # some robust test cases
