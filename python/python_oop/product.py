@@ -21,3 +21,10 @@ class Product:
   def print_info(self):
     print(f"Name: {self.name}, Category: {self.category}, Price: ${self.price}")
     return self
+
+if __name__ == "__main__":
+  print('Start of product output')
+  my_product = Product("Shoes", 60, "Footwear")
+  print(my_product)
+  my_product.print_info()
+  print('End of product output')

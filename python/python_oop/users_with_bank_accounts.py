@@ -10,12 +10,12 @@ class User:
   def make_deposit(self, amount, account=None):
     if account == None:
       account = self.primary_account
-    account.balance += amount
+    account.deposit(amount)
 
   def make_withdrawal(self, amount, account=None):
     if account == None:
       account = self.primary_account
-    account.balance -= amount
+    account.withdraw(amount)
 
   def display_user_balance(self, account=None):
     if account == None:
@@ -29,8 +29,8 @@ class User:
     if other_account == None:
       other_account = other_user.primary_account
 
-    account.balance -= amount
-    other_account.balance += amount
+    account.withdraw(amount)
+    other_account.deposit(amount)
 
 
 # I did my own testing rather than following the instructions on platform
