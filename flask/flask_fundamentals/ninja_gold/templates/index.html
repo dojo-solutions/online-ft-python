@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" 
+   href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <link rel="stylesheet" type="text/css" 
+   href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+  <title>Ninja Gold</title>
+</head>
+<body>
+  <div class="container">
+    <div class="gold-container">
+      <p>Your Gold:</p>
+      <div class="gold">{{ session['gold'] }}</div>
+    </div>
+    <div class="locations">
+      <div class="location">
+        <h2>Farm</h2>
+        <p>(earns 10-20 golds)</p>
+        <form action="/process" method="post">
+          <input type="hidden" name="location" value="farm">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </div>
+      <div class="location">
+        <h2>Cave</h2>
+        <p>(earns 5-10 golds)</p>
+        <form action="/process" method="post">
+          <input type="hidden" name="location" value="cave">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </div>
+      <div class="location">
+        <h2>House</h2>
+        <p>(earns 2-5 golds)</p>
+        <form action="/process" method="post">
+          <input type="hidden" name="location" value="house">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </div>
+      <div class="location">
+        <h2>Casino</h2>
+        <p>(earns/takes 0-50 golds)</p>
+        <form action="/process" method="post">
+          <input type="hidden" name="location" value="casino">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </div>
+    </div>
+    <div class="activities">
+      {% for activity in session['activities'] %}
+        <p class="{{ activity['css_class'] }}">{{ activity['content'] }}</p>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>
