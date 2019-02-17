@@ -1,0 +1,22 @@
+.main-container {
+  text-align: center;
+}
+
+.input-container {
+  width: 300px;
+  height: 300px;
+  border: 2px solid black;
+  display: inline-block;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
