@@ -1,0 +1,37 @@
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+  .header p {
+    display: inline-block;
+  }
+
+  .header p,
+  .header h1 {
+    font-size: 20pt;
+    font-weight: normal;
+    margin: 0;
+  }
+
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+
+  .horizontal-line {
+    height: 100%;
+    border-right: 1px solid black;
+    width: 2px;
+  }
+

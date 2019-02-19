@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" 
+   href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <link rel="stylesheet" type="text/css" 
+   href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+  <title>Private Wall</title>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>CodingDojo Wall</h1>
+      <div class="welcome">
+        <p>Welcome, {{ user_info['first_name'] }}</p>
+        <a href="/logout" class="button">Logout</a>
+      </div>
+    </div>
+    <div class="main">
+      <div class="received-messages body-container">
+        <h2>{{ messages | length }} Message(s) for you</h2>
+        {% for message in messages %}
+          <div class="message">
+            <div class="message-content">
+              <h3>{{ message['first_name'] }} said ({{ message['created_at'] }}):</h3>
+              <p>{{ message['content'] }}</p>
+            </div>
+            <div class="delete-button">
+              <a href="/messages/{{ message['message_id'] }}/delete" class="button">Delete</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="horizontal-line"></div>
+      <div class="send-messages body-container">
+        <h2>Send Messages</h2>
+        <p>You have sent {{ user_info['message_count'] }} messages so far.</p>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+          {% for message in messages %}
+          <li class="error">{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% for user in users %}
+          <div class="form-container">
+            <form action="/messages/create" method="post">
+              <label for="receiver_name">{{ user['first_name'] }}</label>
+              <input type="hidden" name="receiver_id" value="{{ user['id'] }}">
+              <textarea name="content" id="" cols="30" rows="10"></textarea>
+              <input type="submit" value="Send">
+            </form>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
