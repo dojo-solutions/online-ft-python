@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" 
+   href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <link rel="stylesheet" type="text/css" 
+   href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'main/styles/style.css' %}">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <p class="centered">Random Word (attempt #{{ request.session.count }})</p>
+    <h1 class="bordered centered">{{ request.session.random_word }}</h1>
+    <a href="/generate" class="button centered">Generate</a>
+  </div>
+</body>
+</html>
