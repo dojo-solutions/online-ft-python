@@ -1,0 +1,58 @@
+Book.objects.create(title="C Sharp")
+Book.objects.create(title="Java")
+Book.objects.create(title="Python")
+Book.objects.create(title="PHP")
+Book.objects.create(title="Ruby")
+
+Author.objects.create(first_name="Jane", last_name="Austen")
+Author.objects.create(first_name="Emily", last_name="Dickinson")
+Author.objects.create(first_name="Fyodor", last_name="Dostoevsky")
+Author.objects.create(first_name="William", last_name="Shakespeare")
+Author.objects.create(first_name="Lao", last_name="Tzu")
+
+book = Book.objects.get(title="C Sharp")
+book.title = "C#"
+book.save()
+
+author = Author.objects.get(id=4)
+author.first_name = "Bill"
+author.save()
+
+first_author = Author.objects.get(id=1)
+first_book = Book.objects.get(id=1)
+second_book = Book.objects.get(id=2)
+first_author.books.add(first_book)
+first_author.books.add(second_book)
+
+second_author = Author.objects.get(id=2)
+third_book = Book.objects.get(id=3)
+second_author.books.add(first_book)
+second_author.books.add(second_book)
+second_author.books.add(third_book)
+
+third_author = Author.objects.get(id=3)
+fourth_book = Book.objects.get(id=4)
+third_author.books.add(first_book)
+third_author.books.add(second_book)
+third_author.books.add(third_book)
+third_author.books.add(fourth_book)
+
+fourth_author = Author.objects.get(id=4)
+fifth_book = Book.objects.get(id=5)
+fourth_author.books.add(first_book)
+fourth_author.books.add(second_book)
+fourth_author.books.add(third_book)
+fourth_author.books.add(fourth_book)
+fourth_author.books.add(fifth_book)
+
+third_book.authors.all()
+
+first_from_third = third_book.authors.first()
+third_book.authors.remove(first_from_third)
+
+fifth_author = Author.objects.get(id=5)
+second_book.authors.add(fifth_author)
+
+third_author.books.all()
+
+fifth_book.authors.all()
