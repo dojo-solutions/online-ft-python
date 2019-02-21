@@ -1,0 +1,8 @@
+.bordered {
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.center-text {
+  text-align: center;
+}
