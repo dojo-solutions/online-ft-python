@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'books_authors_app/styles/style.css' %}">
+  <title>Books Show</title>
+</head>
+<body>
+  <div class="container">
+    <h1>{{ book.title }}</h1>
+    <h2>ID:</h2>
+    <p>{{ book.id }}</p>
+    <h2>Description:</h2>
+    <p>{{ book.desc }}</p>
+    <h2>Authors:</h2>
+    <ul>
+      {% for author in book.authors.all %}
+        <li>{{ author.first_name }} {{ author.last_name }}</li>
+      {% endfor %}
+    </ul>
+    <form action="/books/{{ book.id }}/add_author" method="post">
+      {% csrf_token %}
+      <select name="author" id="">
+        {% for author in other_authors %}
+          <option value="{{ author.id }}">{{ author.first_name }}  {{ author.last_name }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Add">
+    </form>
+  </div>
+</body>
+</html>

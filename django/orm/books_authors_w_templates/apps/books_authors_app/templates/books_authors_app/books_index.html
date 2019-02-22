@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" 
+   href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <link rel="stylesheet" type="text/css" 
+   href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'books_authors_app/styles/style.css' %}">
+  <title>Books Index</title>
+</head>
+<body>
+  <div class="container">
+    <div class="index-container">
+      <div class="form-left">
+        <form action="/books/create/" method="post">
+          {% csrf_token %}
+          <label for="title">Title:</label>
+          <input type="text" name="title">
+          <label for="desc">Description:</label>
+          <textarea name="desc" cols="20" rows="10"></textarea>
+          <input type="submit" value="Add">
+        </form>
+      </div>
+      <div class="table-right">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for book in books %}
+              <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>
+                  <a href="/books/{{ book.id }}/">View</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
