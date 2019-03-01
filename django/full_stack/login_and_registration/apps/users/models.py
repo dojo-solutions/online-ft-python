@@ -56,6 +56,7 @@ class UserManager(models.Manager):
             last_name = form['last_name'],
             email = form['email'],
             pw_hash = pw_hash,
+            birthday = datetime.strptime(form['birthday'], '%Y-%m-%d')
         )
         return user.id
 
@@ -71,6 +72,7 @@ class User(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
+    birthday = models.DateTimeField()
     pw_hash = models.CharField(max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
