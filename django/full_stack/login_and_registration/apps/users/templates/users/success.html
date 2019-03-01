@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=;, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" 
+   href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <link rel="stylesheet" type="text/css" 
+   href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'users/styles/style.css' %}">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Success!</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Success! Welcome, {{ user.first_name }}!</h1>
+    <p class="green">Successfully registered (or logged in)!</p>
+    <a href="/logout" class="button">Logout</a>
+  </div>
+</body>
+</html>
