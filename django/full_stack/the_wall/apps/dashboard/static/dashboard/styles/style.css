@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+.comments {
+  padding: 20px;
+  width: 70%;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.green {
+  color: green;
+}

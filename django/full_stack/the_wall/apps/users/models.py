@@ -1,6 +1,7 @@
 from django.db import models
 import re
 import bcrypt
+from datetime import datetime, timedelta
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
@@ -22,8 +23,29 @@ class UserManager(models.Manager):
         if existing_users:
             errors.append("Email already in use.")
 
+        try:
+            # if this doesn't work, it will throw an error
+            # if there's an error we'll use the except block
+            birthday = datetime.strptime(form['birthday'], '%Y-%m-%d')
+            now = datetime.now()
+            if birthday > now:
+                errors.append("Birthday must be in the past.")
+
+            diff = now - birthday
+            # create a timedelta of 13 years
+            date_checker = timedelta(days=365*13)
+            if diff < date_checker:
+                errors.append("Must be at least 13 years of age.")
+        except:
+            # date input works in chrome and takes this pattern
+            # the date input sends a different pattern back, hence the strptime formatting
+            errors.append("Birthday must be a valid date in MM/DD/YYYY format.")
+
         if len(form['password']) < 8:
             errors.append("Password must be greater than 8 characters long.")
+
+        if form['password'] != form['confirm']:
+            errors.append("Passwords must match.")
 
         return errors
     
@@ -34,6 +56,7 @@ class UserManager(models.Manager):
             last_name = form['last_name'],
             email = form['email'],
             pw_hash = pw_hash,
+            birthday = datetime.strptime(form['birthday'], '%Y-%m-%d')
         )
         return user.id
 
@@ -49,6 +72,7 @@ class User(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
+    birthday = models.DateTimeField()
     pw_hash = models.CharField(max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

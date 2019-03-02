@@ -11,21 +11,21 @@ def create(req):
     if errors:
         for error in errors:
             messages.error(req, error)
-        return redirect('users:new')
+        return redirect('/users/new')
     # create user
     user_id = User.objects.easy_create(req.POST)
     req.session['user_id'] = user_id
-    return redirect('dashboard:index')
+    return redirect('/')
 
 def login(req):
     valid, response = User.objects.login(req.POST)
     if not valid:
         messages.error(req, response)
-        return redirect('users:new')
+        return redirect('/users/new')
     
     req.session['user_id'] = response
-    return redirect('dashboard:index')
+    return redirect('/')
 
 def logout(req):
     req.session.clear()
-    return redirect('users:new')
+    return redirect('/users/new')

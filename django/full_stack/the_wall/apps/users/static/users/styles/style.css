@@ -1,0 +1,9 @@
+.form-container {
+  display: inline-block;
+  width: 45%;
+  vertical-align: top;
+}
+
+.green {
+  color: green;
+}

@@ -19,7 +19,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('apps.users.urls', namespace="users")),
-    # url(r'^posts/', include('apps.posts.urls', namespace="posts")),
-    # url(r'^comments/', include('apps.comments.urls', namespace="comments")),
+    url(r'^comments/', include('apps.comments.urls', namespace="comments")),
+    url(r'^posts/', include('apps.posts.urls', namespace="posts")),
     url(r'^', include('apps.dashboard.urls', namespace="dashboard")),
 ]
